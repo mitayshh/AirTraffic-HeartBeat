@@ -55,8 +55,10 @@ d] Now you can individually run the "WeatherRadar.java" file and "FaultDetection
 
 WORKING
 _______
-a] To simulate real life conditions, an error is introduced in the system using random number generation whenever number "24" is generated randomly.
+a] Publisher-Subscriber design pattern is used using Java Messaging Service(JMS) API. JMS makes it easy to implement publisher-subscriber pattern by providing it's topic functionality. Using topic's any subscriber that connects to the topic will receive messages sent by any publisher on that topic.
 
-b] WeatherRadar.java file sends heartbeat every 5 seconds.
+b] To simulate real life conditions, an error is introduced in the system using random number generation whenever number "24" is generated randomly.
 
-c] FaultDetectionSystem.java file waits for 7 seconds, and if doesn't receive heartbeat in 7 seconds it declares that WeatherRadar system is dead.
+c] WeatherRadar.java file sends heartbeat every 5 seconds.
+
+d] FaultDetectionSystem.java file waits for 7 seconds, and if doesn't receive heartbeat in 7 seconds it declares that WeatherRadar system is dead.
