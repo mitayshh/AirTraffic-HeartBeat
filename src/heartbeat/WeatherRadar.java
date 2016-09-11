@@ -85,11 +85,11 @@ int num = 0;
 while(true) {
 	//Delay of 5 seconds
 	Thread.sleep(5000);
-	num = rand.nextInt((100-1)+1)+1;
+	num = rand.nextInt((50-1)+1)+1;
 	 //msg = br.readLine();
 	 //System.out.println(num);
-     if(num==50) {
-  	   //System.out.println("Process Exiting");
+     if(num==24) {
+  	   System.out.println("Process Exiting");
            pub.writeMsg("Process Exiting");
            pub.close();
            System.exit(0);
