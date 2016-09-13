@@ -17,8 +17,7 @@ public class FaultDetectionSystem implements MessageListener {
 	private String topicName = "jms/WeatherRadarTopic";
 	private Topic top;
 	private TopicSubscriber tSub;
-	public static int n = 1;
-	public boolean insideMsg;
+	public boolean insideMsg = false;
 	
 	
 	//Constructor
@@ -52,8 +51,7 @@ public class FaultDetectionSystem implements MessageListener {
 	//Message parsing from Topic
 	@Override
 	public void onMessage(Message msg) {
-		 n++;
-		 insideMsg = false;
+		 insideMsg = true;
 		 //System.out.println(n);
 	      try {
 	          //  Extracting the TextMessage object from the Message
@@ -101,21 +99,15 @@ public class FaultDetectionSystem implements MessageListener {
 			FaultDetectionSystem sub = new FaultDetectionSystem(username,password);
 			
 			//Fault Detection mechanism
-			int i;
-			int temp = 0;
-			temp = sub.n;
-			sub.insideMsg = true;
 			while(true)
 			{
-				i = sub.n;
 				//Delay of 7 seconds
 				Thread.sleep(7000);
 				//System.out.println(i);
-				if(i>temp || !sub.insideMsg)
+				if(sub.insideMsg)
 				{
 					System.out.println("Weather Radar is alive");
-					temp = i;
-					sub.insideMsg = true;
+					sub.insideMsg = false;
 				}else{
 					System.out.println("Weather Radar is dead");
 				}
